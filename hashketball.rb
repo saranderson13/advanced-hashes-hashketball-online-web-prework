@@ -254,9 +254,9 @@ def long_name_steals_a_ton?
   # returns true if the player with the longest name has the most steals
   
   player_to_beat = { name: player_with_longest_name, steals: 0 }
-  game_hash.each do |home_away|
-    home_away[1][:players].each do |player_stuff|
-      player_to_beat[:steals] = player_stuff[1][:steals] if player_stuff[0] == player_to_beat[:name]
+  game_hash.each do |home_away, team_stats|
+    team_stats[:players].each do |player, stats|
+      player_to_beat[:steals] = stats[:steals] if player == player_to_beat[:name]
     end
   end
   
