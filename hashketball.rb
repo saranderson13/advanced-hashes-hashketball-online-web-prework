@@ -172,11 +172,11 @@ def big_shoe_rebounds
   # returns the number of rebounds of the player with the biggest shoe size
   rebounders = { shoe: 0, rebounds: 0 }
   
-  game_hash.each do |home_away|
-    home_away[1][:players].each do |stat_pack|
-      if stat_pack[1][:shoe] > rebounders[:shoe]
-        rebounders[:shoe] = stat_pack[1][:shoe]
-        rebounders[:rebounds] = stat_pack[1][:rebounds]
+  game_hash.each do |home_away, team_info|
+    team_info[:players].each do |player, stats|
+      if stats[:shoe] > rebounders[:shoe] 
+        rebounders[:shoe] = stats[:shoe]
+        rebounders[:rebounds] = stats[:rebounds]
       end
     end
   end
