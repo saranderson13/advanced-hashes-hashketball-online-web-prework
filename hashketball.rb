@@ -123,12 +123,8 @@ end
 def num_points_scored(player_name)
   # returns the number of points scored by a player
   
-  # player_points = 0
-
   game_hash.each do |home_away, team_info|
-    team_info[:players].each do |player, stats| 
-      return stats[:points] if player == player_name 
-    end
+    team_info[:players].each { |player, stats|  return stats[:points] if player == player_name }
   end
 end
 
@@ -136,14 +132,11 @@ end
 def shoe_size(player_name)
   # returns the shoe size of a player
   
-  player_shoe_size = 0
-
   game_hash.each do |home_away, team_info|
-    team_info[:players].each do |player, stats|
-      player_shoe_size = stats[:shoe] if player == player_name
+    team_info[:players].each { |player, stats|
+      return stats[:shoe] if player == player_name
     end
   end
-  player_shoe_size
 end
 
 
