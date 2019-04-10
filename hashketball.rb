@@ -147,7 +147,10 @@ end
 def team_names
   # returns an array with both team names
   teams = []
-  game_hash.each { |home_away, team_info| teams << team_info[:team_name] }
+  game_hash.each do |home_away, team_info| 
+    binding.pry
+    teams << team_info[:team_name] 
+  end
   teams
 end
 
