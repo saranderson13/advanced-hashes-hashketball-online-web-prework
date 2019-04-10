@@ -215,16 +215,16 @@ def winning_team
     }
   }
   
-  game_hash.each do |home_away|
-    if home_away[0] == :home
-      team_scores[:home][:name] = home_away[1][:team_name]
-      home_away[1][:players].each do |player_stuff|
-        team_scores[:home][:points] << player_stuff[1][:points]
+  game_hash.each do |home_away, team_info|
+    if home_away == :home
+      team_scores[:home][:name] = team_info[:team_name]
+      team_info[:players].each do |player, stats|
+        team_scores[:home][:points] << stats[:points]
       end
-    elsif home_away[0] == :away
-      team_scores[:away][:name] = home_away[1][:team_name]
-      home_away[1][:players].each do |player_stuff| 
-        team_scores[:away][:points] << player_stuff[1][:points]
+    elsif home_away == :away
+      team_scores[:away][:name] = team_info[:team_name]
+      team_info[:players].each do |player, stats|
+        team_scores[:away][:points] << stats[:points]
       end
     end
   end
@@ -240,8 +240,8 @@ def player_with_longest_name
   # returns the player with the longest name
   longest_name = ""
   
-  game_hash.each do |home_away|
-    home_away[1][:players].each { |player| longest_name = player[0] if player[0].length > longest_name.length }
+  game_hash.each do |home_away, team_stats|
+    team_stats[:players].each { |player, stats| longest_name = player if player.length > longest_name.length }
   end
   
   longest_name
