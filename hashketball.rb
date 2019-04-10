@@ -189,8 +189,8 @@ def most_points_scored
   # returns the name of the player with the most points
   highest_scorer = { player: "", points: 0 }
   
-  game_hash.each do |home_away|
-    home_away[1][:players].each do |stat_pack|
+  game_hash.each do |home_away, team_stats|
+    team_stats[:players].each do |stat_pack|
       if stat_pack[1][:points] > highest_scorer[:points]
         highest_scorer[:player] = stat_pack[0]
         highest_scorer[:points] = stat_pack[1][:points]
