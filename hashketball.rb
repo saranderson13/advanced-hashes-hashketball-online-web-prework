@@ -156,9 +156,7 @@ def player_numbers(team_name)
   jersey_numbers = []
   
   game_hash.each do |home_away, team_info|
-    if team_info[:team_name] == team_name
-      return team_info[:players].map { |player, stats| stats[:number] }
-    end
+    return team_info[:players].map { |player, stats| stats[:number] } if team_info[:team_name] == team_name
   end
 end
 
@@ -166,8 +164,11 @@ end
 def player_stats(player_name)
   # returns a hash of the player's stats
   stats = {}
-  game_hash.each do |home_away|
-    home_away[1][:players].each { |stat_pack| stats = stat_pack[1] if stat_pack[0] == player_name }
+  game_hash.each do |home_away, team_info|
+    team_info[:players].each do |stat_pack| 
+      binding.pry
+      stats = stat_pack[1] if stat_pack[0] == player_name 
+    end
   end
   stats
 end
