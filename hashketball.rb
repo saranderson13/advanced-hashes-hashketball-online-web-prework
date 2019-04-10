@@ -148,7 +148,7 @@ def team_names
   # returns an array with both team names
   
   # teams = []
-  game_hash.collect { |home_away, team_info| teams << team_info[:team_name] }
+  game_hash.collect { |home_away, team_info| team_info[:team_name] }
   # teams
 end
 
