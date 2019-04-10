@@ -123,14 +123,11 @@ end
 def num_points_scored(player_name)
   # returns the number of points scored by a player
   
-  player_points = 0
-
   game_hash.each do |home_away, team_info|
     team_info[:players].each do |player, stats| 
-      player_points = stats[:points] if player == player_name 
+      stats[:points] if player == player_name 
     end
   end
-  player_points
 end
 
 
