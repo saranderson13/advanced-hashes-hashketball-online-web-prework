@@ -152,8 +152,8 @@ def team_colors(team_name)
   # returns an array with the team colors
   team_colors = []
   game_hash.each do |home_away, team_info|
-    binding.pry
-    home_away[1].each { |team_stats| team_colors = game_hash[home_away[0]][:colors] if team_stats[1] == team_name }
+    # binding.pry
+    team_colors = team_info[:colors] if team_stats[1] == team_name }
   end
   team_colors
 end
