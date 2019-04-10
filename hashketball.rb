@@ -146,10 +146,8 @@ end
 
 def team_names
   # returns an array with both team names
-  
-  # teams = []
+
   game_hash.collect { |home_away, team_info| team_info[:team_name] }
-  # teams
 end
 
 
@@ -157,13 +155,11 @@ def player_numbers(team_name)
   # returns an array of all jersey numbers for a team
   jersey_numbers = []
   
-  game_hash.each do |home_away|
-    if home_away[1][:team_name] == team_name
-      home_away[1][:players].each { |player| jersey_numbers << player[1][:number] }
+  game_hash.each do |home_away, team_info|
+    if team_info[:team_name] == team_name
+      team_info[:players].map { |player, stats| stats[:number] }
     end
   end
-  
-  jersey_numbers
 end
 
 
