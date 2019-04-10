@@ -165,9 +165,8 @@ def player_stats(player_name)
   # returns a hash of the player's stats
   stats = {}
   game_hash.each do |home_away, team_info|
-    team_info[:players].each do |stat_pack| 
-      binding.pry
-      stats = stat_pack[1] if stat_pack[0] == player_name 
+    team_info[:players].each do |name, stats| 
+      return stats if name == player_name 
     end
   end
   stats
